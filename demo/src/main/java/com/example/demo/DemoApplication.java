@@ -13,6 +13,9 @@ public class DemoApplication {
 		student.study();
 		student.readBook();
 
+		Student st1 = context.getBean(Student.class);
+		st1.study();
+
 	}
 
 }
