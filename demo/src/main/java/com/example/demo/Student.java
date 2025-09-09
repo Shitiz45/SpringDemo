@@ -13,6 +13,9 @@ public class Student {
     private int studentId;
     private String studentName;
     private int studentMarks;
+    @Autowired
+    @Qualifier("B1")
+    private Book book;
 
     // constructor
     public Student() {
@@ -44,9 +47,13 @@ public class Student {
         this.studentMarks = studentMarks;
     }
 
-    @Autowired
-    @Qualifier("B1")
-    Book book;
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
 
     public void study() {
         System.out.println("Student is studying");
