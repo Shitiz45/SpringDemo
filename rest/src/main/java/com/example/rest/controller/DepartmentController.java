@@ -21,8 +21,8 @@ public class DepartmentController {
     }
 
     @GetMapping("/department")
-    public List<Department> fetchDepartmentById() {
-        return departmentService.fetchDepartmentById();
+    public List<Department> fetchDepartmentBy() {
+        return departmentService.fetchDepartment();
     }
 
 }

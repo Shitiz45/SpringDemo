@@ -7,5 +7,5 @@ public interface DepartmentService {
 
     public Department saveDepartment(Department department);
 
-    public List<Department> fetchDepartmentById();
+    public List<Department> fetchDepartment();
 }

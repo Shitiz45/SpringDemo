@@ -18,4 +18,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employees;
     }
 
+    public Employee getEmployeeById(Long empId) {
+        return employeeRepository.findById(empId).orElse(null);
+    }
+
 }
