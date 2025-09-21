@@ -3,6 +3,8 @@ package com.example.rest.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Objects;
+
 import com.example.rest.repository.EmployeeRepository;
 import com.example.rest.entity.Employee;
 
@@ -32,6 +34,23 @@ public class EmployeeServiceImpl implements EmployeeService {
     public String deleteEmployeeById(Long empId) {
         employeeRepository.deleteById(empId);
         return "Employee deleted successfully";
+    }
+
+    @Override
+    public Employee updateEmployee(Long empId, Employee employee) {
+        Employee empDB = employeeRepository.findById(empId).get();
+        if (Objects.nonNull(employee.getEmpName()) && !"".equalsIgnoreCase(employee.getEmpName())) {
+            empDB.setEmpName(employee.getEmpName());
+        }
+
+        if (Objects.nonNull(employee.getEmpDepartment()) && !"".equalsIgnoreCase(employee.getEmpDepartment())) {
+            empDB.setEmpDepartment(employee.getEmpDepartment());
+        }
+
+        if (employee.getEmpSalary() != 0) {
+            empDB.setEmpSalary(employee.getEmpSalary());
+        }
+        return employeeRepository.save(empDB);
     }
 
 }

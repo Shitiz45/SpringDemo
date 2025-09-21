@@ -4,11 +4,13 @@ import com.example.rest.entity.Employee;
 import java.util.List;
 
 public interface EmployeeService {
-    List<Employee> saveEmployee(List<Employee> employees);
+    public List<Employee> saveEmployee(List<Employee> employees);
 
-    List<Employee> fetchEmployee();
+    public List<Employee> fetchEmployee();
 
-    Employee getEmployeeById(Long empId);
+    public Employee getEmployeeById(Long empId);
 
-    String deleteEmployeeById(Long empId);
+    public void deleteEmployeeById(Long empId);
+
+    public Employee updateEmployee(Long empId, Employee employee);
 }
