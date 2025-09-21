@@ -4,6 +4,8 @@ import com.example.rest.entity.Employee;
 import java.util.List;
 
 public interface EmployeeService {
+    public Employee createEmployee(Employee employee);
+
     public List<Employee> saveEmployee(List<Employee> employees);
 
     public List<Employee> fetchEmployee();

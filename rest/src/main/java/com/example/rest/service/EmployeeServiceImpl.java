@@ -15,6 +15,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeRepository employeeRepository;
 
     @Override
+    public Employee createEmployee(Employee employee) {
+        return employeeRepository.save(employee);
+    }
+
+    @Override
     public List<Employee> saveEmployee(List<Employee> employees) {
         employees = employeeRepository.saveAll(employees);
         return employees;
@@ -31,9 +36,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public String deleteEmployeeById(Long empId) {
+    public void deleteEmployeeById(Long empId) {
         employeeRepository.deleteById(empId);
-        return "Employee deleted successfully";
     }
 
     @Override

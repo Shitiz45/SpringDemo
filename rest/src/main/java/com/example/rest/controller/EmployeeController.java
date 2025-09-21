@@ -18,6 +18,11 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    @PostMapping("/employees/batch")
+    public Employee createEmployee(@RequestBody Employee employee) {
+        return employeeService.createEmployee(employee);
+    }
+
     @PostMapping("/employees")
     public List<Employee> saveEmployee(@RequestBody List<Employee> employees) {
         System.out.println("Port 8082 is under operation.....");
@@ -35,8 +40,9 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/employees/{id}")
-    public void deleteEmployeeById(@PathVariable("id") Long empId) {
+    public String deleteEmployeeById(@PathVariable("id") Long empId) {
         employeeService.deleteEmployeeById(empId);
+        return "Employee deleted successfully";
 
     }
 
