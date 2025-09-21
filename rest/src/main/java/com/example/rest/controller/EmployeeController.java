@@ -1,6 +1,7 @@
 package com.example.rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,9 +23,20 @@ public class EmployeeController {
         return employeeService.saveEmployee(employees);
     }
 
+    @GetMapping("/employees")
+    public List<Employee> fetchEmployees() {
+        return employeeService.fetchEmployee();
+    }
+
     @GetMapping("/employees/{id}")
     public Employee fetchEmployeesByID(@PathVariable("id") Long empId) {
         return employeeService.getEmployeeById(empId);
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public String deleteEmployeeById(@PathVariable("id") Long empId) {
+        employeeService.deleteEmployeeById(empId);
+        return "Employee deleted successfully";
     }
 
 }

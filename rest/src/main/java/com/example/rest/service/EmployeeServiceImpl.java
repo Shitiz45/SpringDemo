@@ -18,8 +18,20 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employees;
     }
 
+    @Override
+    public List<Employee> fetchEmployee() {
+        return employeeRepository.findAll();
+    }
+
+    @Override
     public Employee getEmployeeById(Long empId) {
         return employeeRepository.findById(empId).orElse(null);
+    }
+
+    @Override
+    public String deleteEmployeeById(Long empId) {
+        employeeRepository.deleteById(empId);
+        return "Employee deleted successfully";
     }
 
 }
