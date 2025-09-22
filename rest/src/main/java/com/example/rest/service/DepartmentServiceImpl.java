@@ -35,6 +35,11 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
+    public Department getDepartmentByName(String departmentName) {
+        return departmentRepository.getDepartmentByDepartmentName(departmentName);
+    }
+
+    @Override
     public void deleteAllDepartments() {
         departmentRepository.deleteAll();
     }

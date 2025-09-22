@@ -13,6 +13,8 @@ public interface DepartmentService {
 
     public Department getDepartmentById(Long deptId);
 
+    public Department getDepartmentByName(String departmentName);
+
     public void deleteAllDepartments();
 
     public void deleteDepartmentById(Long deptId);
