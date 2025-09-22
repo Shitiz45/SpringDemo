@@ -7,5 +7,15 @@ public interface DepartmentService {
 
     public Department saveDepartment(Department department);
 
-    public List<Department> fetchDepartment();
+    public List<Department> saveDepartments(List<Department> department);
+
+    public List<Department> fetchDepartments();
+
+    public Department getDepartmentById(Long deptId);
+
+    public void deleteAllDepartments();
+
+    public void deleteDepartmentById(Long deptId);
+
+    public Department updateDepartmentById(Long deptId, Department department);
 }
