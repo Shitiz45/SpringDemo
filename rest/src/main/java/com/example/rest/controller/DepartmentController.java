@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-
+import jakarta.validation.Valid;
 import com.example.rest.entity.Department;
 import com.example.rest.service.DepartmentService;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,12 +20,12 @@ public class DepartmentController {
     private DepartmentService departmentService;
 
     @PostMapping("/department")
-    public Department saveDepartment(@RequestBody Department department) {
+    public Department saveDepartment(@Valid @RequestBody Department department) {
         return departmentService.saveDepartment(department);
     }
 
     @PostMapping("/department/batch")
-    public List<Department> saveDepartments(@RequestBody List<Department> department) {
+    public List<Department> saveDepartments(@Valid @RequestBody List<Department> department) {
         return departmentService.saveDepartments(department);
     }
 

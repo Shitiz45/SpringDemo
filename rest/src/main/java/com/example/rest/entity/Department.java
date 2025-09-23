@@ -4,25 +4,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 
 @Entity
 @Data
-@AllArgsConstructor
-@Getter
-@Setter
 @NoArgsConstructor
-@ToString
 public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long departmentId;
+    private Long departmentId;
+    @NotBlank(message = "Please add department name")
     private String departmentName;
     private String departmentCode;
     private String departmentAddress;
