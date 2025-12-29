@@ -1,5 +1,7 @@
 package com.example.rest.entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +19,7 @@ public class Department {
     private Long departmentId;
     @NotBlank(message = "Please add department name")
     private String departmentName;
+    @Length(max = 6, min = 1)
     private String departmentCode;
     private String departmentAddress;
 
