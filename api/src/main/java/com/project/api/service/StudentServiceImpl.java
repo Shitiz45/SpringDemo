@@ -7,12 +7,14 @@ import lombok.RequiredArgsConstructor;
 import java.util.stream.Collectors;
 import com.project.api.dto.StudentDTO;
 import java.util.List;
+import org.modelmapper.ModelMapper;
 
 @Service
 @RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
+    private final ModelMapper modelMapper;
 
     @Override
     public List<StudentDTO> fetchStudents() {
@@ -27,11 +29,7 @@ public class StudentServiceImpl implements StudentService {
     public StudentDTO fetchStudentById(Long id) {
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Student with ID " + id + " not found"));
+        return modelMapper.map(student, StudentDTO.class);
 
-        return new StudentDTO(
-                student.getStudentID(),
-                student.getStudentName(),
-                student.getStudentMarks());
     }
-
 }
