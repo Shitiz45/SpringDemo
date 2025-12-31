@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.stream.Collectors;
 import com.project.api.dto.StudentDTO;
 import com.project.api.dto.AddStudentsDTO;
+import com.project.api.dto.UpdateStudentDTO;
 import java.util.List;
 import org.modelmapper.ModelMapper;
 
@@ -59,4 +60,14 @@ public class StudentServiceImpl implements StudentService {
         }
         studentRepository.deleteById(id);
     }
+
+    @Override
+    public StudentDTO updateStudentById(Long id, UpdateStudentDTO updateStudentDTO) {
+        Student student = studentRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Student with ID " + id + " not found"));
+        modelMapper.map(updateStudentDTO, student);
+        studentRepository.save(student);
+        return modelMapper.map(student, StudentDTO.class);
+    }
+
 }

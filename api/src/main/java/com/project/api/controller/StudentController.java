@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import lombok.RequiredArgsConstructor;
 
+import com.project.api.dto.UpdateStudentDTO;
 import com.project.api.dto.AddStudentsDTO;
 import com.project.api.dto.StudentDTO;
 
@@ -47,5 +49,11 @@ public class StudentController {
     public ResponseEntity<Void> deleteStudentByID(@PathVariable Long id) {
         studentService.deleteStudentByID(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/students/{id}")
+    public ResponseEntity<StudentDTO> updateStudentById(@PathVariable Long id,
+            @RequestBody UpdateStudentDTO updateStudentDTO) {
+        return ResponseEntity.status(HttpStatus.OK).body(studentService.updateStudentById(id, updateStudentDTO));
     }
 }
