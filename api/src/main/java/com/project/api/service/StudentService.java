@@ -12,4 +12,6 @@ public interface StudentService {
     StudentDTO createNewStudent(AddStudentsDTO addStudentsDTO);
 
     List<StudentDTO> createMultipleStudents(List<AddStudentsDTO> addStudentsDTO);
+
+    void deleteStudentByID(Long id);
 }

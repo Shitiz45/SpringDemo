@@ -51,4 +51,12 @@ public class StudentServiceImpl implements StudentService {
                 .map(student -> modelMapper.map(student, StudentDTO.class))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void deleteStudentByID(Long id) {
+        if (!studentRepository.existsById(id)) {
+            throw new IllegalArgumentException("Student with ID " + id + " not found");
+        }
+        studentRepository.deleteById(id);
+    }
 }
