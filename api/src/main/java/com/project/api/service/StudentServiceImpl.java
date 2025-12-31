@@ -17,9 +17,21 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<StudentDTO> fetchStudents() {
         List<Student> students = studentRepository.findAll();
-        return students.stream().map(student -> new StudentDTO(
+        return students.stream().map(s -> new StudentDTO(
+                s.getStudentID(),
+                s.getStudentName(),
+                s.getStudentMarks())).collect(Collectors.toList());
+    }
+
+    @Override
+    public StudentDTO fetchStudentById(Long id) {
+        Student student = studentRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Student with ID " + id + " not found"));
+
+        return new StudentDTO(
                 student.getStudentID(),
                 student.getStudentName(),
-                student.getStudentMarks())).collect(Collectors.toList());
+                student.getStudentMarks());
     }
+
 }

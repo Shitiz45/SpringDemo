@@ -5,4 +5,6 @@ import com.project.api.dto.StudentDTO;
 
 public interface StudentService {
     List<StudentDTO> fetchStudents();
+
+    StudentDTO fetchStudentById(Long id);
 }
